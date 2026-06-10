@@ -76,12 +76,14 @@ import Base from '../layouts/Base.astro';
         <div class="fundador">
           <div class="fundador__avatar" aria-hidden="true">RD</div>
           <h3>Rogério Duque</h3>
-          <p>Bio a ser fornecida.</p> <!-- TODO: replace with actual bio -->
+          <p class="fundador__role">Consultor Administrativo e Financeiro</p>
+          <p>Bacharel em Ciências Contábeis com MBA em Finanças, Auditoria e Controladoria. Com mais de 20 anos de experiência em contabilidade, administração e controladoria, Rogério é especialista em consultoria financeira para o Terceiro Setor. Atuou por 3 anos na Secretaria de Desenvolvimento Social do Estado de São Paulo, onde foi responsável pelo núcleo financeiro e de prestação de contas da Coordenadoria de Políticas sobre Drogas. Sua expertise abrange prestação de contas de parcerias, acompanhamento de fiscalizações, auditorias e capacitação de equipes.</p>
         </div>
         <div class="fundador">
           <div class="fundador__avatar" aria-hidden="true">TO</div>
           <h3>Thaiane Oliveira</h3>
-          <p>Bio a ser fornecida.</p> <!-- TODO: replace with actual bio -->
+          <p class="fundador__role">Gestão de Pessoas e Desenvolvimento Organizacional</p>
+          <p>Psicóloga Clínica especializada em Terapia Cognitivo-Comportamental, Thaiane alia expertise clínica com sólida experiência em gestão organizacional. Atua em Recrutamento & Seleção e Gestão de Pessoas, aplicando seu conhecimento para identificar talentos e fomentar ambientes de trabalho saudáveis e produtivos. Na RT, é responsável pelo desenvolvimento das equipes e pela construção de uma cultura organizacional alinhada aos valores da empresa.</p>
         </div>
       </div>
     </div>
@@ -169,8 +171,8 @@ import Base from '../layouts/Base.astro';
   .fundadores-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
-    max-width: 640px;
+    gap: var(--spacing-lg);
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
   }
@@ -191,12 +193,22 @@ import Base from '../layouts/Base.astro';
   }
 
   .fundador h3 {
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.25rem;
+  }
+
+  .fundador__role {
+    color: var(--color-gold) !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: var(--spacing-sm) !important;
   }
 
   .fundador p {
     color: var(--color-gray);
     font-size: 0.9375rem;
+    text-align: left;
   }
 
   @media (max-width: 768px) {
