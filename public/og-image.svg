@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Dark green background -->
+  <rect width="1200" height="630" fill="#1C463C"/>
+  
+  <!-- Gold accent circles with varying opacity -->
+  <circle cx="1050" cy="150" r="150" fill="#C5A24E" opacity="0.15"/>
+  <circle cx="150" cy="550" r="120" fill="#C5A24E" opacity="0.08"/>
+  <circle cx="950" cy="500" r="100" fill="#C5A24E" opacity="0.12"/>
+  
+  <!-- RT text -->
+  <text x="600" y="280" font-family="Georgia, serif" font-size="72" fill="#F2EFE6" text-anchor="middle" font-weight="bold">RT</text>
+  
+  <!-- CONSULTORIA text -->
+  <text x="600" y="370" font-family="Arial, sans-serif" font-size="22" fill="#F2EFE6" text-anchor="middle" letter-spacing="2">CONSULTORIA</text>
+  
+  <!-- Subtitle text -->
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="16" fill="#F2EFE6" text-anchor="middle" opacity="0.85">Gestão financeira e compliance para o Terceiro Setor</text>
+</svg>
