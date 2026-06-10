@@ -1,0 +1,205 @@
+---
+const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
+const email = 'contato@example.com'; // TODO: replace {{EMAIL_CONTATO}}
+---
+
+<div class="contact-modal" id="contactModal" aria-hidden="true" role="dialog" aria-label="Escolha como entrar em contato">
+  <div class="contact-modal__backdrop" data-close-modal></div>
+  <div class="contact-modal__content">
+    <button class="contact-modal__close" data-close-modal aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <h2 class="contact-modal__title">Como prefere falar conosco?</h2>
+    <p class="contact-modal__subtitle">Escolha o canal mais conveniente para você.</p>
+
+    <div class="contact-modal__options">
+      <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="contact-modal__option contact-modal__option--whatsapp">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="contact-modal__icon" aria-hidden="true">
+          <path d="M16.003 3.2A12.763 12.763 0 003.2 15.927a12.66 12.66 0 001.716 6.38L3.2 28.8l6.7-1.756a12.76 12.76 0 006.087 1.55h.016A12.764 12.764 0 0016.003 3.2zm0 23.37a10.59 10.59 0 01-5.4-1.48l-.388-.23-4.02 1.054 1.072-3.916-.252-.4a10.57 10.57 0 01-1.622-5.638A10.607 10.607 0 0116.003 5.36 10.607 10.607 0 0126.6 15.944 10.607 10.607 0 0116.003 26.57zm5.81-7.934c-.318-.16-1.882-.928-2.174-1.034-.292-.106-.505-.16-.718.16-.212.318-.824 1.034-1.01 1.246-.186.212-.372.238-.69.08-.318-.16-1.343-.495-2.559-1.578-.946-.844-1.584-1.886-1.77-2.204-.186-.318-.02-.49.14-.648.144-.142.318-.372.478-.558.16-.186.212-.318.318-.53.106-.212.054-.398-.026-.558-.08-.16-.718-1.73-.984-2.368-.26-.622-.524-.538-.718-.548-.186-.008-.398-.01-.61-.01a1.174 1.174 0 00-.85.398c-.292.318-1.114 1.088-1.114 2.652s1.14 3.076 1.3 3.29c.16.212 2.246 3.428 5.444 4.808.76.328 1.354.524 1.816.67.764.242 1.458.208 2.008.126.612-.092 1.882-.77 2.148-1.512.266-.744.266-1.38.186-1.512-.08-.134-.292-.212-.61-.372z" fill="currentColor"/>
+        </svg>
+        <div>
+          <span class="contact-modal__label">WhatsApp</span>
+          <span class="contact-modal__desc">Resposta rápida pelo chat</span>
+        </div>
+      </a>
+
+      <a href={`mailto:${email}`} class="contact-modal__option contact-modal__option--email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="contact-modal__icon" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M22 4L12 13 2 4"/>
+        </svg>
+        <div>
+          <span class="contact-modal__label">E-mail</span>
+          <span class="contact-modal__desc">{email}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .contact-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-modal.open {
+    display: flex;
+  }
+
+  .contact-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+
+  .contact-modal__content {
+    position: relative;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    max-width: 420px;
+    width: calc(100% - 2rem);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalIn 0.25s ease;
+  }
+
+  @keyframes modalIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .contact-modal__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray);
+    padding: 4px;
+    border-radius: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .contact-modal__close:hover {
+    color: var(--color-green);
+  }
+
+  .contact-modal__title {
+    font-size: 1.375rem;
+    margin-bottom: var(--spacing-xs);
+    padding-right: 2rem;
+  }
+
+  .contact-modal__subtitle {
+    color: var(--color-gray);
+    font-size: 0.9375rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-modal__options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .contact-modal__option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 1.25rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border: 1px solid transparent;
+  }
+
+  .contact-modal__option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+
+  .contact-modal__option--whatsapp {
+    background-color: #25D366;
+    color: var(--color-white);
+  }
+
+  .contact-modal__option--email {
+    background-color: var(--color-cream);
+    color: var(--color-green);
+    border-color: rgba(28, 70, 60, 0.1);
+  }
+
+  .contact-modal__icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .contact-modal__label {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .contact-modal__desc {
+    display: block;
+    font-size: 0.8125rem;
+    opacity: 0.85;
+  }
+</style>
+
+<script>
+  function initContactModal() {
+    const modal = document.getElementById('contactModal');
+    if (!modal) return;
+
+    // Open modal
+    document.querySelectorAll('[data-open-contact]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close modal
+    modal.querySelectorAll('[data-close-modal]').forEach(el => {
+      el.addEventListener('click', () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  initContactModal();
+</script>

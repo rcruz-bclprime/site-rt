@@ -2,8 +2,6 @@
 import Base from '../layouts/Base.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 
-const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
-
 const services = [
   {
     title: 'Conformidade com o TCE',
@@ -63,9 +61,9 @@ const services = [
     <div class="container cta-inner fade-in">
       <h2>Precisa de ajuda com compliance financeiro?</h2>
       <p>Fale com a nossa equipe e descubra como podemos proteger sua organização.</p>
-      <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="btn btn--gold">
-        Fale conosco pelo WhatsApp
-      </a>
+      <button data-open-contact class="btn btn--gold">
+        Fale conosco
+      </button>
     </div>
   </section>
 </Base>

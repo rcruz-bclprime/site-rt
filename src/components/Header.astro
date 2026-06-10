@@ -6,7 +6,6 @@ const navItems = [
 ];
 
 const currentPath = Astro.url.pathname;
-const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
 ---
 
 <header class="header">
@@ -38,9 +37,9 @@ const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_N
           </li>
         ))}
         <li>
-          <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="btn btn--gold header__cta">
+          <button data-open-contact class="btn btn--gold header__cta">
             Fale conosco
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
