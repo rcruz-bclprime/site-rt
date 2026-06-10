@@ -1,17 +1,188 @@
 ---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 
+const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
+
+const services = [
+  {
+    title: 'Conformidade com o TCE',
+    description: 'Classificação correta e prestações no prazo.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9z"/></svg>',
+  },
+  {
+    title: 'Aplicação correta por rubrica',
+    description: 'Sem glosas nem abatimento de repasses.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="19" cy="17" r="2"/></svg>',
+  },
+  {
+    title: 'Segurança jurídica e financeira',
+    description: 'Contra devoluções com juros e correção.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z"/></svg>',
+  },
+  {
+    title: 'Continuidade dos contratos',
+    description: 'Elegibilidade preservada para novos editais.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>',
+  },
+];
+
+const differentials = [
+  {
+    title: '100% remoto',
+    description: 'Com atendimento presencial quando necessário.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+  },
+  {
+    title: 'Alcance nacional',
+    description: 'Atendemos OSCs em todo o Brasil.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
+  },
+  {
+    title: 'Especialistas no Terceiro Setor',
+    description: 'Um nicho que contabilidades tradicionais não dominam.',
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+  },
+];
+
+const jsonLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'RT Consultoria',
+  description: 'Gestão financeira e compliance para Organizações da Sociedade Civil (OSCs) que recebem repasses de recursos públicos.',
+  url: 'https://example.com', // TODO: replace {{SITE_URL}}
+  logo: 'https://example.com/favicon.svg', // TODO: replace {{SITE_URL}}
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    availableLanguage: 'Portuguese',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'Brazil',
+  },
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="RT Consultoria — Gestão Financeira e Compliance para OSCs"
+  description="Especialistas em gestão financeira e compliance para Organizações da Sociedade Civil. Prestação de contas organizada, no prazo e auditável."
+  jsonLD={jsonLD}
+>
+  <Hero />
+
+  <!-- O que protegemos -->
+  <section class="section section--cream">
+    <div class="container">
+      <h2 class="section-title fade-in">O que protegemos</h2>
+      <div class="cards-grid">
+        {services.map(service => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            icon={service.icon}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Por que a RT -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Por que a RT</h2>
+      <div class="diff-grid">
+        {differentials.map(diff => (
+          <div class="diff-item fade-in">
+            <div class="diff-item__icon" aria-hidden="true" set:html={diff.icon} />
+            <h3 class="diff-item__title">{diff.title}</h3>
+            <p class="diff-item__desc">{diff.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="section section--dark cta-section">
+    <div class="container cta-inner fade-in">
+      <h2>Proteja sua organização</h2>
+      <p>Do risco à regularidade — com método.</p>
+      <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+        Fale conosco pelo WhatsApp
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+
+  .diff-item__icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto var(--spacing-sm);
+    color: var(--color-gold);
+  }
+
+  .diff-item__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .diff-item__title {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .diff-item__desc {
+    color: var(--color-gray);
+    font-size: 0.9375rem;
+  }
+
+  .cta-section {
+    text-align: center;
+  }
+
+  .cta-inner h2 {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .cta-inner p {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.125rem;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .diff-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
