@@ -1,0 +1,156 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Sobre', href: '/sobre' },
+  { label: 'Serviços', href: '/servicos' },
+];
+
+const currentPath = Astro.url.pathname;
+const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="/" class="header__logo" aria-label="RT Consultoria - Página inicial">
+      <svg viewBox="0 0 100 40" class="header__logo-svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="14" fill="none" stroke="#C5A24E" stroke-width="1.2"/>
+        <text x="20" y="25" font-family="Georgia, serif" font-size="14" font-weight="600" fill="#F2EFE6" text-anchor="middle">RT</text>
+        <text x="62" y="24" font-family="Arial, sans-serif" font-size="6" letter-spacing="1.8" fill="#C5A24E" text-anchor="middle">CONSULTORIA</text>
+      </svg>
+    </a>
+
+    <button class="header__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+      <span class="header__toggle-bar"></span>
+    </button>
+
+    <nav class="header__nav" aria-label="Navegação principal">
+      <ul class="header__list">
+        {navItems.map(item => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['header__link', { 'header__link--active': currentPath === item.href }]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="btn btn--gold header__cta">
+            Fale conosco
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--color-green);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .header__logo-svg {
+    width: 140px;
+    height: 56px;
+  }
+
+  .header__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .header__toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-cream);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .header__list {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    list-style: none;
+  }
+
+  .header__link {
+    color: var(--color-cream);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .header__link:hover,
+  .header__link--active {
+    color: var(--color-gold);
+    text-decoration: none;
+  }
+
+  .header__cta {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .header__toggle {
+      display: flex;
+    }
+
+    .header__nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--color-green);
+      padding: var(--spacing-sm);
+      border-top: 1px solid var(--color-green-light);
+    }
+
+    .header__nav.open {
+      display: block;
+    }
+
+    .header__list {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .header__cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.header__toggle');
+  const nav = document.querySelector('.header__nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+  }
+</script>

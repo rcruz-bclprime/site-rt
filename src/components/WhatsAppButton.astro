@@ -1,0 +1,45 @@
+---
+const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
+---
+
+<a
+  href={whatsappURL}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="whatsapp-btn"
+  aria-label="Fale conosco pelo WhatsApp"
+>
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="whatsapp-btn__icon" aria-hidden="true">
+    <path d="M16.003 3.2A12.763 12.763 0 003.2 15.927a12.66 12.66 0 001.716 6.38L3.2 28.8l6.7-1.756a12.76 12.76 0 006.087 1.55h.016A12.764 12.764 0 0016.003 3.2zm0 23.37a10.59 10.59 0 01-5.4-1.48l-.388-.23-4.02 1.054 1.072-3.916-.252-.4a10.57 10.57 0 01-1.622-5.638A10.607 10.607 0 0116.003 5.36 10.607 10.607 0 0126.6 15.944 10.607 10.607 0 0116.003 26.57zm5.81-7.934c-.318-.16-1.882-.928-2.174-1.034-.292-.106-.505-.16-.718.16-.212.318-.824 1.034-1.01 1.246-.186.212-.372.238-.69.08-.318-.16-1.343-.495-2.559-1.578-.946-.844-1.584-1.886-1.77-2.204-.186-.318-.02-.49.14-.648.144-.142.318-.372.478-.558.16-.186.212-.318.318-.53.106-.212.054-.398-.026-.558-.08-.16-.718-1.73-.984-2.368-.26-.622-.524-.538-.718-.548-.186-.008-.398-.01-.61-.01a1.174 1.174 0 00-.85.398c-.292.318-1.114 1.088-1.114 2.652s1.14 3.076 1.3 3.29c.16.212 2.246 3.428 5.444 4.808.76.328 1.354.524 1.816.67.764.242 1.458.208 2.008.126.612-.092 1.882-.77 2.148-1.512.266-.744.266-1.38.186-1.512-.08-.134-.292-.212-.61-.372z" fill="currentColor"/>
+  </svg>
+</a>
+
+<style>
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    background-color: #25D366;
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .whatsapp-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+  }
+
+  .whatsapp-btn__icon {
+    width: 28px;
+    height: 28px;
+  }
+</style>
