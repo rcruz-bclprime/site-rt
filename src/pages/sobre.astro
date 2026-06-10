@@ -169,12 +169,17 @@ import Base from '../layouts/Base.astro';
   }
 
   .fundadores-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-lg);
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .fundador {
+    width: calc(50% - var(--spacing-lg) / 2);
   }
 
   .fundador__avatar {
@@ -220,8 +225,8 @@ import Base from '../layouts/Base.astro';
       grid-template-columns: 1fr 1fr;
     }
 
-    .fundadores-grid {
-      grid-template-columns: 1fr;
+    .fundador {
+      width: 100%;
     }
   }
 </style>
