@@ -1,0 +1,49 @@
+---
+const whatsappURL = 'https://wa.me/5500000000000'; // TODO: replace {{WHATSAPP_NUMERO}}
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <h1 class="hero__title">Gestão financeira segura para quem transforma o Brasil</h1>
+    <p class="hero__subtitle">Prestação de contas organizada e no prazo, sem você precisar entender de TCE.</p>
+    <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="btn btn--gold hero__cta">
+      Fale conosco
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background-color: var(--color-green);
+    color: var(--color-cream);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+  }
+
+  .hero__title {
+    color: var(--color-cream);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+  }
+
+  .hero__cta {
+    font-size: 1.0625rem;
+    padding: 1rem 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: var(--spacing-lg) 0;
+    }
+  }
+</style>
